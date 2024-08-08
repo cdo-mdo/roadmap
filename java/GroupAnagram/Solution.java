@@ -1,3 +1,8 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.lang.String;
+import java.util.Arrays;
+
 public class Solution {
 
     /*
@@ -5,18 +10,34 @@ public class Solution {
      mark positions to avoid process in next iteration.
      */
     public List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> result;
+        List<List<String>> result = new ArrayList<List<String>>();
 
-        for (int i = 0; i < strs.size(); i++) {
-            Add strs[i] to result;
-            Mark i is already processed
-            for (int j = 0; j < strs.size(); j++) {
-                if (j not processed && isAnagram(strs[i], strs[j]) {
-                    add strs[j] to result
-                    mark j as processed
+        /* array to mark position that is already processed */
+        int[] marks = new int[strs.length];
+        for (int i = 0; i < marks.length; i++) {
+            marks[i] = 1;
+        }
+
+        for (int i = 0; i < strs.length; i++) {
+            if (marks[i] == 0) {
+                continue;
+            }
+            List<String> element = new ArrayList<String>();
+            element.add(strs[i]);
+            marks[i] = 0;
+            for (int j = 0; j < strs.length; j++) {
+                if (marks[j] == 0) {
+                    continue;
+                }
+                if (isAnagram(strs[j], strs[i])) {
+                    element.add(strs[j]);
+                    marks[j] = 0;
                 }
             }
+            result.add(element);
         }
+
+		return result;
     }
 
     /**
@@ -44,6 +65,14 @@ public class Solution {
         }
 
         return true;
-
     }
+
+	public static void main(String[] args) {
+		Solution solution = new Solution();
+
+        List<List<String>> results = solution.groupAnagrams(new String[]{"act", "pots", "tops", "cat", "stop", "hat"});
+        System.out.println(Arrays.toString(results.toArray()));
+
+		System.out.println(Arrays.toString(solution.groupAnagrams(new String[]{"x"}).toArray()));
+	}
 }
