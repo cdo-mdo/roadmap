@@ -23,9 +23,27 @@ public class Solution {
      Check if two strings are anagram.
      */
     boolean isAnagram(String str1, String str2) {
-        String sortedStr1 = str1.sort();
-        String sortedStr2 = str2.sort();
-        
-        return sortedStr1.equal(sortedStr2) == 0?true:false;
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        char[] str1CharArray = str1.toCharArray();
+        char[] str2CharArray = str2.toCharArray();
+        for (int i = 0; i < str1CharArray.length; i++) {
+            int j;
+            for (j = 0; j < str2CharArray.length; j++) {
+                if (str2CharArray[j] == str1CharArray[i]) {
+                    str2CharArray[j] = ' ';
+                    break;
+                }
+            }
+
+            if (j == str2CharArray.length) {
+                return false;
+            }
+        }
+
+        return true;
+
     }
 }
