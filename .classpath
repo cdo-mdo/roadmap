@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="java/Anagram"/>
+	<classpathentry kind="src" path="java/ContainsDuplicate"/>
+	<classpathentry kind="src" path="java/GroupAnagram"/>
+	<classpathentry kind="src" path="java/ProductOfArrayExceptSelf"/>
+	<classpathentry kind="src" path="java/TopKElements"/>
+	<classpathentry kind="src" path="java/TwoIntegerSum"/>
+	<classpathentry kind="src" path="ValidSudoku"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
